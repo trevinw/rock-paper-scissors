@@ -15,13 +15,8 @@
 
             function game() {
                 let result;
-                let computerSelection;
-                let playerSelection;
                 for (let i = 0; i < 5; i++) {
-                    computerSelection = computerPlay();
-                    playerSelection = prompt("Rock, paper, or scissors?")
-                    //console.log(computerSelection);
-                    result = playRound(playerSelection, computerSelection);
+                    result = playRound(prompt("Rock, paper, or scissors?"), computerPlay());
                     if (result === -1) {
                         alert("Picked the same thing, try again.")
                         i--;
