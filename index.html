@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function computerPlay() {
+                randomNumber = Math.floor(Math.random() * 10);
+                if (randomNumber <= 2) {
+                    return "rock";
+                } else if (randomNumber <= 5 && randomNumber > 2) {
+                    return "paper";
+                } else {
+                    return "scissors";
+                }
+            }
+
+            function game() {
+                let result;
+                let computerSelection;
+                let playerSelection;
+                for (let i = 0; i < 5; i++) {
+                    computerSelection = computerPlay();
+                    playerSelection = prompt("Rock, paper, or scissors?")
+                    //console.log(computerSelection);
+                    result = playRound(playerSelection, computerSelection);
+                    if (result === -1) {
+                        alert("Picked the same thing, try again.")
+                        i--;
+                    } else {
+                        console.log(result);
+                    }
+                }
+            }
+
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+                    return -1;
+                }
+
+                if ((playerSelection.toLowerCase() === "rock") && (computerSelection.toLowerCase() === "scissors")) {
+                    return "You win! Rock beats scissors.";
+                }
+
+                if ((playerSelection.toLowerCase() === "rock") && (computerSelection.toLowerCase() === "paper")) {
+                    return "You lose! Paper beats rock.";
+                }
+
+                if ((playerSelection.toLowerCase() === "paper") && (computerSelection.toLowerCase() === "rock")) {
+                    return "You win! Paper beats rock.";
+                }
+
+                if ((playerSelection.toLowerCase() === "paper") && (computerSelection.toLowerCase() === "scissors")) {
+                    return "You lose! Scissors beats paper.";
+                }
+
+                if ((playerSelection.toLowerCase() === "scissors") && (computerSelection.toLowerCase() === "paper")) {
+                    return "You win! Scissors beats paper.";
+                }
+
+                if ((playerSelection.toLowerCase() === "scissors") && (computerSelection.toLowerCase() === "rock")) {
+                    return "You lose! Rock beats scissors.";
+                }
+            }
+        </script>
+    </body>
+</html>
